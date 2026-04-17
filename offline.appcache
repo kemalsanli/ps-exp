@@ -1,0 +1,11 @@
+CACHE MANIFEST
+# v1.0 lightweight-672
+
+CACHE:
+index.html
+jb.js
+exp_loader.js
+goldhen.bin
+
+NETWORK:
+*
