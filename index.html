@@ -100,40 +100,18 @@ showBar(0);
 }else if(_origAlert){_origAlert(msg);}
 };
 var _chkCount=0;
-var _launcherStarted=false;
 var _chkInt=setInterval(function(){
 _chkCount++;
-if(msgs2.innerHTML===LoadedMSG && !_launcherStarted){
-_launcherStarted=true;
-updateStatus('GoldHEN yuklendi. Daemon baslatiliyor...','wait');
-showBar(90);
-setTimeout(launch_pskit,1500);
-return;
+if(msgs2.innerHTML===LoadedMSG){
+clearInterval(_chkInt);
+updateStatus('GoldHEN yuklendi!','ok');
+showBar(100);
 }
 if(_chkCount>120){
 clearInterval(_chkInt);
-if(!jbFailed && !_launcherStarted)updateStatus('Zaman asimi. Sayfayi yeniden acin.','fail');
+if(!jbFailed)updateStatus('Zaman asimi. Sayfayi yeniden acin.','fail');
 }
 },500);
-
-function launch_pskit(){
-PLfile='launch_pskit.bin';
-msgs2.innerHTML='Launching PSKit daemon...';
-var s=document.createElement('script');
-s.src='exp_loader.js?v=2';
-s.onerror=function(){
-clearInterval(_chkInt);
-updateStatus('Daemon payload yuklenemedi.','fail');
-};
-s.onload=function(){
-setTimeout(function(){
-clearInterval(_chkInt);
-updateStatus('PSKit Daemon tetiklendi.','ok');
-showBar(100);
-},2500);
-};
-document.head.appendChild(s);
-}
 
 function onExploitFail(reason){
 retryCount++;

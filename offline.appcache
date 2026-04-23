@@ -1,12 +1,11 @@
 CACHE MANIFEST
-# v1.1 lightweight-672 + pskit-launcher
+# v1.0 lightweight-672
 
 CACHE:
 index.html
 jb.js
 exp_loader.js
 goldhen.bin
-launch_pskit.bin
 
 NETWORK:
 *
